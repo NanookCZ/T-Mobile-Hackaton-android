@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Track</string>
+    <string name="help">Help</string>
+    <string name="system_log">System log</string>
+    <string name="reset_pin">Reset PIN</string>
+    <string name="logout">Logout</string>
+    <string name="active">Active</string>
+    <string name="all">All</string>
+</resources>
