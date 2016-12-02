@@ -1,4 +1,4 @@
-package com.dhl.demp.mytrack;
+package com.rudolfhladik.tmobile.prototype;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

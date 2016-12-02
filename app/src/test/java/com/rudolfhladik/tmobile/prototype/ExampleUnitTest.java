@@ -1,4 +1,4 @@
-package com.dhl.demp.mytrack;
+package com.rudolfhladik.tmobile.prototype;
 
 import org.junit.Test;
 

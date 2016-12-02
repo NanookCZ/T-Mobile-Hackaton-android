@@ -1,12 +1,12 @@
-package com.dhl.demp.mytrack.activities
+package com.rudolfhladik.tmobile.prototype.activities
 
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.dhl.demp.mytrack.R
-import com.dhl.demp.mytrack.adapters.MainPagerAdapter
-import com.dhl.demp.mytrack.recievers.LoginReceiver
+import com.rudolfhladik.tmobile.prototype.R
+import com.rudolfhladik.tmobile.prototype.adapters.MainPagerAdapter
+import com.rudolfhladik.tmobile.prototype.recievers.LoginReceiver
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 

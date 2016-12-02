@@ -1,4 +1,4 @@
-package com.dhl.demp.mytrack.fragments
+package com.rudolfhladik.tmobile.prototype.fragments
 
 import android.support.v4.app.Fragment
 

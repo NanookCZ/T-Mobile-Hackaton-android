@@ -1,13 +1,13 @@
-package com.dhl.demp.mytrack.adapters
+package com.rudolfhladik.tmobile.prototype.adapters
 
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.dhl.demp.mytrack.R
-import com.dhl.demp.mytrack.fragments.ActiveShipmentFragment
-import com.dhl.demp.mytrack.fragments.AllShipmentsFragment
-import com.dhl.demp.mytrack.fragments.FragmentTabInfo
+import com.rudolfhladik.tmobile.prototype.R
+import com.rudolfhladik.tmobile.prototype.fragments.ActiveShipmentFragment
+import com.rudolfhladik.tmobile.prototype.fragments.AllShipmentsFragment
+import com.rudolfhladik.tmobile.prototype.fragments.FragmentTabInfo
 
 /**
  *

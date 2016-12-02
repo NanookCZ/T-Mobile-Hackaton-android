@@ -1,4 +1,4 @@
-package com.dhl.demp.mytrack.singletons
+package com.rudolfhladik.tmobile.prototype.singletons
 
 import android.content.Context
 import android.content.SharedPreferences

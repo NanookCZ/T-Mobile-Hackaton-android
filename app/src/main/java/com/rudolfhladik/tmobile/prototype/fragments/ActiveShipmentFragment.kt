@@ -1,36 +1,36 @@
-package com.dhl.demp.mytrack.fragments
+package com.rudolfhladik.tmobile.prototype.fragments
+
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.dhl.demp.mytrack.R
-import com.dhl.demp.mytrack.singletons.PreferencesSingleton
-
-
-import kotlinx.android.synthetic.main.fragment_all_shipments.*
+import com.rudolfhladik.tmobile.prototype.R
+import com.rudolfhladik.tmobile.prototype.singletons.PreferencesSingleton
 
 /**
  *
  * Created by rd on 13/10/16.
  */
-class AllShipmentsFragment : Fragment() {
+class ActiveShipmentFragment : Fragment() {
+
     companion object {
-        fun newInstance(): AllShipmentsFragment {
-            return AllShipmentsFragment()
+        fun newInstance(): ActiveShipmentFragment {
+            return ActiveShipmentFragment()
         }
 
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = container?.inflate(R.layout.fragment_all_shipments)
+        val view = container?.inflate(R.layout.fragment_active_shipment)
         return view
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        val mSingl = PreferencesSingleton.getInstance(context.applicationContext)
-        text.text = mSingl.getToken()
+
+        PreferencesSingleton.getInstance(context.applicationContext).setToken("muj TOKEN")
+
     }
 
     fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View {

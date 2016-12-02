@@ -1,4 +1,4 @@
-package com.dhl.demp.mytrack.recievers
+package com.rudolfhladik.tmobile.prototype.recievers
 
 import android.content.BroadcastReceiver
 import android.content.Context
