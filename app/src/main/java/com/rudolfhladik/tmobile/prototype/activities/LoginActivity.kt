@@ -30,6 +30,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        if (PreferencesSingleton.getInstance(this).getToken() != "") {
+            startMain()
+
+        }
+
         mLoginBtn.setOnClickListener {
             login()
         }
@@ -91,6 +96,6 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        mSubscription?.unsubscribe()
+//        mSubscription?.unsubscribe()
     }
 }

@@ -14,6 +14,7 @@ class PreferencesSingleton private constructor(context: Context) {
     private val SHARED_PREFERENCES_NAME = PreferencesSingleton::class.java.canonicalName + "_preferences"
     private val ACCESS_TOKEN = "access_token"
     private val REFRESH_TOKEN = "refresh_token"
+    private val SELECTED_CAR_NAME = "selected_car_name"
 
     init {
         mContext = context.applicationContext
@@ -50,5 +51,14 @@ class PreferencesSingleton private constructor(context: Context) {
 
     fun getRefreshToken(): String {
         return mPreferences.getString(REFRESH_TOKEN, "")
+    }
+
+    fun setSelectedCarName(vehicleName: String) {
+        getEditor().putString(SELECTED_CAR_NAME, vehicleName)
+                .commit()
+    }
+
+    fun getSelectedCarName(): String {
+        return mPreferences.getString(SELECTED_CAR_NAME, "")
     }
 }

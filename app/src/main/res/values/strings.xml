@@ -40,4 +40,5 @@
     <string name="mileage">mileage</string>
     <string name="owners_count">owners</string>
     <string name="two">2</string>
+    <string name="check_safe_distance">Check safe distance</string>
 </resources>

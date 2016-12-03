@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mSpotify"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_jazda"
@@ -40,9 +41,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mNotiText"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:gravity="center"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
+        android:text="Queen - We are the champions //  Queen Greatest Hits - The Platinum Collection "
         android:textColor="@color/grey"
-        tools:text="80 km/hod \n 45 km/hod avg"
 
         />
 

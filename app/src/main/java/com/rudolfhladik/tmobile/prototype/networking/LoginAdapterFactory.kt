@@ -12,7 +12,7 @@ import java.lang.reflect.Modifier
  * Created by rd on 03/12/2016.
  */
 object LoginAdapterFactory {
-    val baseUrl = "https://accounts.moj.io/oauth2/token"
+    val baseUrl = "https://accounts.moj.io/"
 
     fun getAdapter(context: Context): Retrofit {
 
@@ -24,7 +24,7 @@ object LoginAdapterFactory {
         val restAdapter = Retrofit.Builder()
                 .client(UnsafeOkHttpClient().getUnsafeOkHttpClient(context))
 //                .baseUrl(BASE_URL)
-                .baseUrl(RestAdapterFactory.BASE_URL)
+                .baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder()
                         .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)

@@ -3,6 +3,7 @@ package com.rudolfhladik.tmobile.prototype.networking
 import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Header
 import rx.Observable
 
 /**
@@ -11,5 +12,6 @@ import rx.Observable
  */
 interface IRest {
     @GET("v2/vehicles")
-    fun getVehicles(authorization: String): Observable<Response<JsonObject>>
+    fun getVehicles(@Header("Authorization") token: String): Observable<Response<JsonObject>>
+
 }
