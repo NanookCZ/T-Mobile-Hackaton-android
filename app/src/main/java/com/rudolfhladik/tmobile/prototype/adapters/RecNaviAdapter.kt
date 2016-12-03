@@ -1,10 +1,12 @@
 package com.rudolfhladik.tmobile.prototype.adapters
 
+import android.content.Intent
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.ViewGroup
 import com.rudolfhladik.tmobile.prototype.R
+import com.rudolfhladik.tmobile.prototype.activities.RideActivity
 import com.rudolfhladik.tmobile.prototype.extensions.inflate
 import com.rudolfhladik.tmobile.prototype.model.NavItem
 import kotlinx.android.synthetic.main.navi_item.view.*
@@ -58,7 +60,22 @@ class RecNaviAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(item: NavItem) = with(itemView) {
             mIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context, item.iconRes))
             mText.text = item.text
+            mIcon.setOnClickListener { navigate(item.position) }
+            mText.setOnClickListener { navigate(item.position) }
+            mItem.setOnClickListener { navigate(item.position) }
 
+
+        }
+
+        private fun navigate(position: Int) {
+            when (position) {
+                0 -> {
+                    itemView.context.startActivity(Intent(itemView.context, RideActivity::class.java))
+                }
+                else -> {
+                    itemView.context.startActivity(Intent(itemView.context, RideActivity::class.java))
+                }
+            }
         }
     }
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_jazda"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mToolbarnavi"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        />
+
+    <ImageView
+        android:id="@+id/mNotiIcon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent="55%"
+        tools:src="@drawable/spotify"
+        />
+
+    <TextView
+        android:id="@+id/mNotiText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mNotiIcon"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:text="@string/playing_spotify"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        />
+
+    <TextView
+        android:id="@+id/mNotiSubText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mNotiText"
+        android:gravity="center"
+        android:textColor="@color/grey"
+        tools:text="80 km/hod \n 45 km/hod avg"
+
+        />
+
+</android.support.percent.PercentRelativeLayout>

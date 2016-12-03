@@ -16,4 +16,15 @@
     <string name="car_state">Car state</string>
     <string name="ride">Ride</string>
     <string name="users">Users</string>
+    <string name="playing_spotify">Playing Spotify</string>
+    <string name="avg_speed_label">avg speed</string>
+    <string name="erros_label">erros</string>
+    <string name="l_fuel_label">l fuel</string>
+    <string name="bad_oil_state">Bad oil state</string>
+    <string name="nearest_service">Nearest service</string>
+    <string name="nearest_station">Nearest station</string>
+    <string name="estimated_drive">Estimated drive:</string>
+    <string name="consumption">Consumption:</string>
+    <string name="effective_refueling">Effective refueling:</string>
+    <string name="travel_cost">Travel cost:</string>
 </resources>

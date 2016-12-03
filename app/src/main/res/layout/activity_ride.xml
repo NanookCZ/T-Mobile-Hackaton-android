@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mToolbarRide"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+
+        />
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/mCardInfo"
+                android:layout_width="match_parent"
+                android:layout_margin="26dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="4dp"
+                app:layout_heightPercent="45%"
+
+                >
+
+                <android.support.percent.PercentRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/mCarImage"
+                        android:layout_width="match_parent"
+                        app:layout_heightPercent="80%"
+                        />
+
+                    <TextView
+                        android:id="@+id/mSpeed"
+                        android:layout_below="@+id/mCarImage"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_heightPercent="10%"
+                        app:layout_widthPercent="33%"
+                        tools:text="23 km/h"
+                        />
+
+                    <TextView
+                        android:id="@+id/mSpeedLabel"
+                        android:layout_below="@+id/mSpeed"
+                        android:gravity="center"
+                        android:text="@string/avg_speed_label"
+                        android:textColor="@color/grey"
+                        android:textSize="12sp"
+                        app:layout_heightPercent="10%"
+                        app:layout_widthPercent="33%"
+                        />
+
+                    <View
+                        android:id="@+id/separator"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/mCarImage"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/mSpeed"
+                        android:background="@color/grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/mFuel"
+                        android:layout_below="@+id/mCarImage"
+                        android:layout_toEndOf="@+id/separator"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_heightPercent="10%"
+                        app:layout_widthPercent="33%"
+                        tools:text="23"
+                        />
+
+                    <TextView
+                        android:id="@+id/mFuelLabel"
+                        android:layout_below="@+id/mFuel"
+                        android:layout_toEndOf="@+id/separator"
+                        android:gravity="center"
+                        android:text="@string/l_fuel_label"
+                        android:textColor="@color/grey"
+                        android:textSize="12sp"
+                        app:layout_heightPercent="10%"
+                        app:layout_widthPercent="33%"
+                        />
+
+                    <View
+                        android:id="@+id/separator1"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/mCarImage"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/mFuel"
+                        android:background="@color/grey"
+                        />
+
+                    <TextView
+                        android:id="@+id/mError"
+                        android:layout_below="@+id/mCarImage"
+                        android:layout_toEndOf="@+id/separator1"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_heightPercent="10%"
+                        app:layout_widthPercent="33%"
+                        tools:text="2"
+                        />
+
+                    <TextView
+                        android:id="@+id/mErrorLabel"
+                        android:layout_width="match_parent"
+                        android:layout_below="@+id/mFuel"
+                        android:layout_toEndOf="@+id/separator1"
+                        android:gravity="center"
+                        android:text="@string/erros_label"
+                        android:textColor="@color/grey"
+                        android:textSize="12sp"
+                        app:layout_heightPercent="10%"
+                        />
+                </android.support.percent.PercentRelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <ImageView
+                android:id="@+id/mWarningIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mCardInfo"
+                android:layout_margin="26dp"
+                android:src="@drawable/ic_error"
+                tools:src="@drawable/ic_gas_station"
+                />
+
+            <TextView
+                android:id="@+id/mBadOil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mCardInfo"
+                android:layout_marginTop="26dp"
+                android:layout_toEndOf="@+id/mWarningIcon"
+                android:text="@string/bad_oil_state"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/mOilState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mBadOil"
+                android:layout_toEndOf="@+id/mWarningIcon"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                tools:text="50 ml oil"
+                />
+
+            <TextView
+                android:id="@+id/nearServiceLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/mBadOil"
+                android:layout_marginEnd="26dp"
+                android:layout_toEndOf="@+id/mBadOil"
+                android:gravity="end"
+                android:text="@string/nearest_service"
+                android:textColor="@color/azure"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/mNearService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/mOilState"
+                android:layout_marginEnd="26dp"
+                android:layout_toEndOf="@+id/mBadOil"
+                android:gravity="end"
+                android:textColor="@color/azure"
+                android:textSize="16sp"
+                tools:text="134 m"
+
+                />
+
+            <ImageView
+                android:id="@+id/mGasIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mWarningIcon"
+                android:layout_margin="26dp"
+                android:src="@drawable/ic_gas_station"
+                />
+
+            <TextView
+                android:id="@+id/mFuelLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mWarningIcon"
+                android:layout_marginTop="26dp"
+                android:layout_toEndOf="@+id/mGasIcon"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="23 l fuel level"
+                />
+
+            <TextView
+                android:id="@+id/mFuelType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mFuelLevel"
+                android:layout_toEndOf="@+id/mGasIcon"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                tools:text="Natural 95"
+                />
+
+            <TextView
+                android:id="@+id/nearStationLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/mFuelLevel"
+                android:layout_marginEnd="26dp"
+                android:layout_toEndOf="@+id/mFuelLevel"
+                android:gravity="end"
+                android:text="@string/nearest_station"
+                android:textColor="@color/azure"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/mNearStation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/mFuelType"
+                android:layout_marginEnd="26dp"
+                android:layout_toEndOf="@+id/mFuelType"
+                android:gravity="end"
+                android:textColor="@color/azure"
+                android:textSize="16sp"
+                tools:text="200 m, 32,90 Kč/l"
+                />
+
+            <View
+                android:id="@+id/separatorHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/mGasIcon"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="26dp"
+                android:layout_marginRight="26dp"
+                android:background="@color/grey"
+                />
+
+            <TextView
+                android:id="@+id/estimateDriveLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/separatorHorizontal"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="26dp"
+                android:text="@string/estimated_drive"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:id="@+id/mDriveLength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/estimateDriveLabel"
+                android:layout_below="@id/separatorHorizontal"
+                android:layout_marginEnd="26dp"
+                android:layout_toEndOf="@+id/estimateDriveLabel"
+                android:gravity="end"
+                android:text="34 km"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:id="@+id/consumptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/estimateDriveLabel"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="26dp"
+                android:text="@string/consumption"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:id="@+id/mConsamption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/consumptionLabel"
+                android:layout_below="@id/separatorHorizontal"
+                android:layout_marginEnd="26dp"
+                android:layout_toEndOf="@+id/estimateDriveLabel"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="23 l/km"
+                />
+
+            <TextView
+                android:id="@+id/efectiveRefuelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/consumptionLabel"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="26dp"
+                android:text="@string/effective_refueling"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:id="@+id/mRefueling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/efectiveRefuelLabel"
+                android:layout_marginEnd="26dp"
+                android:layout_toEndOf="@+id/efectiveRefuelLabel"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="Karlin, 300 m, 30 Kc/l"
+                />
+
+            <TextView
+                android:id="@+id/travelCostLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/efectiveRefuelLabel"
+                android:layout_marginBottom="2dp"
+                android:layout_marginStart="26dp"
+                android:text="@string/travel_cost"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:id="@+id/mTravelCost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/travelCostLabel"
+                android:layout_marginEnd="26dp"
+                android:layout_toEndOf="@+id/travelCostLabel"
+                android:gravity="end"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="35 l/ 500 Kč"
+                />
+        </android.support.percent.PercentRelativeLayout>
+    </ScrollView>
+</LinearLayout>
+
