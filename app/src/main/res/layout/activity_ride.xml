@@ -34,7 +34,7 @@
                 android:layout_margin="26dp"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="4dp"
-                app:layout_heightPercent="45%"
+                app:layout_heightPercent="43%"
 
                 >
 

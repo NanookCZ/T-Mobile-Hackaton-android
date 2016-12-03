@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mToolbarState"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/mCardInfo"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/mToolbarState"
+        android:layout_margin="26dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp"
+        app:layout_heightPercent="40%"
+
+        >
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mCarIcon"
+                android:layout_width="match_parent"
+                app:layout_heightPercent="80%"
+
+                />
+
+            <TextView
+                android:id="@+id/mVin"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/mCarIcon"
+                android:gravity="center"
+                android:textColor="@color/black"
+                app:layout_heightPercent="10%"
+                tools:text="VIN: 1233141431411"
+                />
+
+            <TextView
+                android:id="@+id/mDateAdded"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/mVin"
+                android:gravity="center"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_heightPercent="10%"
+                tools:text="Date added: 23.07.2016"
+                />
+        </android.support.percent.PercentRelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/carNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mCardInfo"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/car_name"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mCarName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/carNameLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/carNameLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="Skoda Superb"
+        />
+
+    <TextView
+        android:id="@+id/carModelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/carNameLabel"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/model"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mCarModel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/carModelLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/carModelLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="Superb"
+        />
+
+    <TextView
+        android:id="@+id/carYearLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/carModelLabel"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/year"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mCarYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/carYearLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/carYearLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="2015"
+        />
+
+    <TextView
+        android:id="@+id/carOwnersLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/carYearLabel"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/owners"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mOwners"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/carOwnersLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/carOwnersLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="2"
+        />
+
+    <TextView
+        android:id="@+id/notificationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/carOwnersLabel"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/notifications"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mNotify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/notificationLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/notificationLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="ON"
+        />
+
+    <TextView
+        android:id="@+id/nightModeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notificationLabel"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/night_mode"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mnightMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/nightModeLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/nightModeLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="OFF"
+        />
+
+    <TextView
+        android:id="@+id/rideNotifyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nightModeLabel"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/notifications_during_the_ride"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mRideNotify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/rideNotifyLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/rideNotifyLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="ON"
+        />
+
+    <TextView
+        android:id="@+id/hotspotLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rideNotifyLabel"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/share_hotspot"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mHotspot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/hotspotLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/hotspotLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="ON"
+        />
+
+    <TextView
+        android:id="@+id/gpsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hotspotLabel"
+        android:layout_marginBottom="2dp"
+        android:layout_marginStart="26dp"
+        android:text="@string/gpsLabel"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:id="@+id/mTravelCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/gpsLabel"
+        android:layout_marginEnd="26dp"
+        android:layout_toEndOf="@+id/gpsLabel"
+        android:gravity="end"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        tools:text="ON"
+        />
+
+</android.support.percent.PercentRelativeLayout>

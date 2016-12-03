@@ -31,11 +31,10 @@ class MainActivity : AppCompatActivity() {
         mRecNavi.adapter = naviAdapter
         mRecNavi.layoutManager = LinearLayoutManager(this)
         val naviItems = ArrayList<NavItem>()
-        naviItems.add(NavItem(R.drawable.ic_garage, getString(R.string.my_garage), 0))
-        naviItems.add(NavItem(R.drawable.ic_car_configuration, getString(R.string.car_configuration), 1))
-        naviItems.add(NavItem(R.drawable.ic_car_state, getString(R.string.car_state), 2))
-        naviItems.add(NavItem(R.drawable.ic_car_ride, getString(R.string.ride), 3))
-        naviItems.add(NavItem(R.drawable.ic_users, getString(R.string.users), 4))
+        naviItems.add(NavItem(R.drawable.ic_garage, getString(R.string.my_garage), RecNaviAdapter.MY_GARAGE))
+        naviItems.add(NavItem(R.drawable.ic_car_state, getString(R.string.car_state), RecNaviAdapter.CAR_STATE))
+        naviItems.add(NavItem(R.drawable.ic_car_ride, getString(R.string.ride), RecNaviAdapter.RIDE))
+        naviItems.add(NavItem(R.drawable.ic_users, getString(R.string.users), RecNaviAdapter.USERS))
 
         naviAdapter.addItems(naviItems)
 //        viewpager.adapter = mAdapter

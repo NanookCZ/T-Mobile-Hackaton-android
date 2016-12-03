@@ -11,7 +11,7 @@
         android:id="@+id/mIcon"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_margin="16dp"
+        android:layout_margin="4dp"
         tools:src="@drawable/ic_garage"
         />
 
@@ -19,7 +19,7 @@
         android:id="@+id/mText"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_margin="16dp"
+        android:layout_margin="4dp"
         android:layout_toEndOf="@+id/mIcon"
         android:layout_toRightOf="@+id/mIcon"
         android:gravity="center_vertical"

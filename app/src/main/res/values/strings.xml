@@ -27,4 +27,13 @@
     <string name="consumption">Consumption:</string>
     <string name="effective_refueling">Effective refueling:</string>
     <string name="travel_cost">Travel cost:</string>
+    <string name="car_name">Name:</string>
+    <string name="model">Model:</string>
+    <string name="year">Year:</string>
+    <string name="owners">Owners:</string>
+    <string name="notifications">Notifications:</string>
+    <string name="night_mode">Night mode:</string>
+    <string name="notifications_during_the_ride">Notifications during the ride:</string>
+    <string name="share_hotspot">Share hotspot:</string>
+    <string name="gpsLabel">GPS:</string>
 </resources>

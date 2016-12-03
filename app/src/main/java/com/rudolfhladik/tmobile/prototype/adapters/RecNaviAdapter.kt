@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.ViewGroup
 import com.rudolfhladik.tmobile.prototype.R
+import com.rudolfhladik.tmobile.prototype.activities.CarStateActivity
 import com.rudolfhladik.tmobile.prototype.activities.RideActivity
 import com.rudolfhladik.tmobile.prototype.extensions.inflate
 import com.rudolfhladik.tmobile.prototype.model.NavItem
@@ -20,8 +21,18 @@ import kotlinx.android.synthetic.main.navi_item.view.*
 class RecNaviAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
-    //    private var mList: ArrayList<BaseItem>
     private var mList = mutableListOf<NavItem>()
+
+    companion object {
+        @JvmStatic
+        val MY_GARAGE: Int = 0
+        @JvmStatic
+        val CAR_STATE: Int = 1
+        @JvmStatic
+        val RIDE: Int = 2
+        @JvmStatic
+        val USERS: Int = 3
+    }
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
@@ -69,10 +80,18 @@ class RecNaviAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         private fun navigate(position: Int) {
             when (position) {
-                0 -> {
+                MY_GARAGE -> {
                     itemView.context.startActivity(Intent(itemView.context, RideActivity::class.java))
                 }
-                else -> {
+                CAR_STATE -> {
+                    itemView.context.startActivity(Intent(itemView.context, CarStateActivity::class.java))
+
+                }
+
+                RIDE -> {
+                    itemView.context.startActivity(Intent(itemView.context, RideActivity::class.java))
+                }
+                USERS -> {
                     itemView.context.startActivity(Intent(itemView.context, RideActivity::class.java))
                 }
             }

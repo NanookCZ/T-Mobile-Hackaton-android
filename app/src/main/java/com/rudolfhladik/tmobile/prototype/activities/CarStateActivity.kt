@@ -3,19 +3,19 @@ package com.rudolfhladik.tmobile.prototype.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.rudolfhladik.tmobile.prototype.R
-import kotlinx.android.synthetic.main.activity_ride.*
+import kotlinx.android.synthetic.main.activity_car_state.*
 
 /**
  *
  * Created by rd on 03/12/2016.
  */
-class RideActivity : AppCompatActivity() {
+class CarStateActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_ride)
+        setContentView(R.layout.activity_car_state)
 
         //toolbar setup
-        setSupportActionBar(mToolbarRide)
+        setSupportActionBar(mToolbarState)
 
 
     }
