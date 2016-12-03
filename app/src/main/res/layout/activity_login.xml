@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    >
+
+    <ImageView
+        android:id="@+id/fakeFocus"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginTop="128dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo"
+
+        />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/usernameInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fakeFocus"
+        android:layout_marginTop="16dp"
+        android:theme="@style/inputLabel"
+        >
+
+        <EditText
+            android:id="@+id/mUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="28dp"
+            android:hint="@string/username"
+            android:maxLines="1"
+
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/passwordInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usernameInputLayout"
+        android:theme="@style/inputLabel"
+
+        >
+
+        <EditText
+            android:id="@+id/mPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="28dp"
+            android:hint="@string/passworld"
+            android:inputType="textPassword"
+            android:maxLines="1"
+
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/mLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordInputLayout"
+        android:layout_margin="28dp"
+        android:background="@drawable/btn_transparent"
+        android:text="LOGIN"
+        android:textColor="@color/white"
+        />
+
+</RelativeLayout>

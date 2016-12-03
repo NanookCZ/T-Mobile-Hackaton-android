@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rudolfhladik.tmobile.prototype.activities.MainActivity">
+    android:background="@drawable/login_bg"
+    tools:context="com.rudolfhladik.tmobile.prototype.activities.MainActivity"
+    >
 
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true"
-        android:focusableInTouchMode="true">
+        android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout
+        <TextView
+            android:id="@+id/mTmobile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="158dp"
+            android:gravity="center"
+            android:text="@string/t_mobile_hackaton"
+            android:textColor="@color/white"
 
-            <include
-                layout="@layout/main_toolbar"
-                />
+            />
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-        </android.support.design.widget.AppBarLayout>
+        <TextView
+            android:id="@+id/mAppName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mTmobile"
+            android:gravity="center"
+            android:text="@string/mojio_app"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
 
-        <android.support.design.widget.NavigationView
-            android:layout_width="320dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="@android:color/white"
+            />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/mNavigationCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mAppName"
+            android:layout_margin="16dp"
+            android:background="@color/white"
+            app:cardCornerRadius="4dp"
 
             >
-            <!--app:menu="@menu/navigationdrawer_main"-->
-            <!--app:headerLayout="@layout/nav_header"-->
-            <LinearLayout
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecNavi"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:layout_height="wrap_content"/>
 
-                <include
-                    layout="@layout/nav_header"/>
+        </android.support.v7.widget.CardView>
 
-                <Button
-                    android:id="@+id/logout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/logout"
+    </android.support.percent.PercentRelativeLayout>
 
-                    />
-            </LinearLayout>
-        </android.support.design.widget.NavigationView>
-
-    </android.support.v4.widget.DrawerLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>
