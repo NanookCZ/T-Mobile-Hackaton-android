@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/mCardInfo"
+        android:layout_width="match_parent"
+        android:layout_margin="26dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="4dp"
+        app:layout_heightPercent="43%"
+
+        >
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/mCarImage"
+                android:layout_width="match_parent"
+                app:layout_heightPercent="80%"
+                />
+
+            <TextView
+                android:id="@+id/mSpeed"
+                android:layout_below="@+id/mCarImage"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_heightPercent="10%"
+                app:layout_widthPercent="33%"
+                tools:text="23 km/h"
+                />
+
+            <TextView
+                android:id="@+id/mSpeedLabel"
+                android:layout_below="@+id/mSpeed"
+                android:gravity="center"
+                android:text="@string/avg_speed_label"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_heightPercent="10%"
+                app:layout_widthPercent="33%"
+                />
+
+            <View
+                android:id="@+id/separator"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/mCarImage"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/mSpeed"
+                android:background="@color/grey"
+                />
+
+            <TextView
+                android:id="@+id/mFuel"
+                android:layout_below="@+id/mCarImage"
+                android:layout_toEndOf="@+id/separator"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_heightPercent="10%"
+                app:layout_widthPercent="33%"
+                tools:text="23"
+                />
+
+            <TextView
+                android:id="@+id/mFuelLabel"
+                android:layout_below="@+id/mFuel"
+                android:layout_toEndOf="@+id/separator"
+                android:gravity="center"
+                android:text="@string/l_fuel_label"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_heightPercent="10%"
+                app:layout_widthPercent="33%"
+                />
+
+            <View
+                android:id="@+id/separator1"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/mCarImage"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/mFuel"
+                android:background="@color/grey"
+                />
+
+            <TextView
+                android:id="@+id/mError"
+                android:layout_below="@+id/mCarImage"
+                android:layout_toEndOf="@+id/separator1"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_heightPercent="10%"
+                app:layout_widthPercent="33%"
+                tools:text="2"
+                />
+
+            <TextView
+                android:id="@+id/mErrorLabel"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/mFuel"
+                android:layout_toEndOf="@+id/separator1"
+                android:gravity="center"
+                android:text="@string/erros_label"
+                android:textColor="@color/grey"
+                android:textSize="12sp"
+                app:layout_heightPercent="10%"
+                />
+        </android.support.percent.PercentRelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mUsersList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mCardInfo"
+        />
+
+</android.support.percent.PercentRelativeLayout>

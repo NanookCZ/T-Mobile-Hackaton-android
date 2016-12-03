@@ -3,9 +3,11 @@ package com.rudolfhladik.tmobile.prototype.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import com.rudolfhladik.tmobile.prototype.R
 import com.rudolfhladik.tmobile.prototype.adapters.RecNaviAdapter
 import com.rudolfhladik.tmobile.prototype.model.NavItem
+import com.rudolfhladik.tmobile.prototype.singletons.PreferencesSingleton
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.main_toolbar.*
 import java.util.*
@@ -39,7 +41,10 @@ class MainActivity : AppCompatActivity() {
         naviAdapter.addItems(naviItems)
 //        viewpager.adapter = mAdapter
 
+//        MojioClient client = new MojioClient();
 
+        val log = PreferencesSingleton.getInstance(this).getToken()
+        Log.i("login", "$log ")
     }
 
     override fun onDestroy() {

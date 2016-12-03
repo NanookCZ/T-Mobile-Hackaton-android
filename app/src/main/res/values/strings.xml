@@ -36,4 +36,8 @@
     <string name="notifications_during_the_ride">Notifications during the ride:</string>
     <string name="share_hotspot">Share hotspot:</string>
     <string name="gpsLabel">GPS:</string>
+    <string name="manufac_year">manufac. year</string>
+    <string name="mileage">mileage</string>
+    <string name="owners_count">owners</string>
+    <string name="two">2</string>
 </resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@drawable/bg"
+    >
+
+    <ImageView
+        android:id="@+id/mCircleOwnerImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        />
+
+    <TextView
+        android:id="@+id/mOwnerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/mCircleOwnerImage"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="Svetlana"
+        />
+
+    <TextView
+        android:id="@+id/mOwnerLocationAndType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mOwnerName"
+        android:layout_toEndOf="@+id/mCircleOwnerImage"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        tools:text="Prague, Car owner"
+        />
+
+    <TextView
+        android:id="@+id/mLastDrive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mOwnerLocationAndType"
+        android:layout_toEndOf="@+id/mCircleOwnerImage"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        tools:text="Last ride: 24.11.2016, 08:00"
+        />
+
+</android.support.percent.PercentRelativeLayout>

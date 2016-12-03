@@ -3,6 +3,9 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.rudolfhladik.tmobile.prototype">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -39,6 +42,11 @@
         <activity
             android:name=".activities.CarStateActivity"
             android:label="Car state"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".activities.SelectCarActivity"
+            android:label="Select car"
             android:screenOrientation="portrait"
             />
     </application>
