@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import com.google.gson.JsonObject
@@ -29,7 +30,7 @@ class SpotifyNotifyActivity : AppCompatActivity() {
 
     lateinit var mSubscription: Subscription
     lateinit var mObserver: Observer<Response<JsonObject>>
-    var i: Int = 64 //40
+    var i: Int = 40 //40
     var run: Boolean = true
     var safeDistance: Float = 100.0f
     var rising = true
@@ -40,6 +41,12 @@ class SpotifyNotifyActivity : AppCompatActivity() {
 
 
     val dummyCarSpeed = 55
+
+    var layoutReady = object : ViewTreeObserver.OnGlobalLayoutListener {
+        override fun onGlobalLayout() {
+            startAnim()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +85,11 @@ class SpotifyNotifyActivity : AppCompatActivity() {
             }
         }
         getData()
+        mNotiSubText.viewTreeObserver.addOnGlobalLayoutListener(layoutReady)
+
+
     }
+
 
     private fun handleResponse(response: Response<JsonObject>?) {
         if (response != null) {
@@ -102,66 +113,73 @@ class SpotifyNotifyActivity : AppCompatActivity() {
     private fun listenToMusic() {
         if (warningSet.isRunning) warningSet.cancel()
         if (!spotifyPlayed) {
-            mNotiIcon.setImageDrawable(getDrawable(R.drawable.ic_spotify))
-            mNotiIcon.scaleX = 1f
-            mNotiIcon.scaleY = 1f
-            mNotiText.text = " From your playlist.."
-            mNotiSubText.text = " Queen - We are the champions //  Queen Greatest Hits "
-            spotifyPlayed = true
-
-            val parent: ViewGroup = mNotiSubText.parent as ViewGroup
-            val distance = parent.width - mNotiSubText.left
-            val distanceHeight = parent.height - mLeftNote.height
-            val distanceHeightR = parent.height - mRightNote.height
-            val flyYouFool = ObjectAnimator.ofFloat(mNotiSubText, "translationX", distance.toFloat(), 0f, -distance.toFloat())
-            val leftNote = ObjectAnimator.ofFloat(mLeftNote, "translationY", 0f, -distanceHeight.toFloat())
-            val rightNote = ObjectAnimator.ofFloat(mRightNote, "translationY", 0f, -distanceHeightR.toFloat())
-            val leftVisibility = ObjectAnimator.ofFloat(mLeftNote, "alpha", 1f, 0f)
-            val rightVisibility = ObjectAnimator.ofFloat(mRightNote, "alpha", 1f, 0f)
-
-            with(rightNote) {
-                duration = 2000
-                repeatCount = 30
-                interpolator = TimeInterpolator { it }
-                repeatMode = Animation.INFINITE
-            }
-            with(rightVisibility) {
-                duration = 2000
-                repeatCount = 30
-                interpolator = DecelerateInterpolator()
-                repeatMode = Animation.INFINITE
-            }
-            with(leftNote) {
-                duration = 2300
-                repeatCount = 30
-                interpolator = TimeInterpolator { it }
-                repeatMode = Animation.INFINITE
-            }
-            with(leftVisibility) {
-                duration = 2300
-                repeatCount = 30
-                interpolator = DecelerateInterpolator()
-                repeatMode = Animation.INFINITE
-            }
-            with(flyYouFool) {
-                duration = 6000
-                repeatCount = 30
-                interpolator = TimeInterpolator { it }
-                repeatMode = Animation.INFINITE
-//                start()
-            }
-            val roundRound = ObjectAnimator.ofFloat(mNotiIcon, "rotation", 360f, 0f)
-            with(roundRound) {
-                duration = 4000
-                repeatCount = 30
-                interpolator = TimeInterpolator { it }
-                repeatMode = Animation.INFINITE
-//                start()
-            }
-            playSet.playTogether(flyYouFool, roundRound, leftNote, leftVisibility, rightNote, rightVisibility)
-            playSet.start()
-
+            startAnim()
         }
+
+    }
+
+    private fun startAnim() {
+        mNotiSubText.viewTreeObserver.removeOnGlobalLayoutListener(layoutReady)
+        mNotiIcon.setImageDrawable(getDrawable(R.drawable.ic_spotify))
+        mNotiIcon.scaleX = 1f
+        mNotiIcon.scaleY = 1f
+        mNotiText.text = " From your playlist.."
+        mNotiSubText.text = " Queen - We are the champions //  Queen Greatest Hits "
+        spotifyPlayed = true
+
+        val parent: ViewGroup = mNotiSubText.parent as ViewGroup
+        val distance = parent.width - mNotiSubText.left
+        val distanceHeight = parent.height - mLeftNote.height
+        val distanceHeightR = parent.height - mRightNote.height
+        val flyYouFool = ObjectAnimator.ofFloat(mNotiSubText, "translationX", distance.toFloat(), 0f, -distance.toFloat())
+        val leftNote = ObjectAnimator.ofFloat(mLeftNote, "translationY", 0f, -distanceHeight.toFloat())
+        val rightNote = ObjectAnimator.ofFloat(mRightNote, "translationY", 0f, -distanceHeightR.toFloat())
+        val leftVisibility = ObjectAnimator.ofFloat(mLeftNote, "alpha", 1f, 0f)
+        val rightVisibility = ObjectAnimator.ofFloat(mRightNote, "alpha", 1f, 0f)
+
+        with(rightNote) {
+            duration = 2000
+            repeatCount = 30
+            interpolator = TimeInterpolator { it }
+            repeatMode = Animation.INFINITE
+        }
+        with(rightVisibility) {
+            duration = 2000
+            repeatCount = 30
+            interpolator = DecelerateInterpolator()
+            repeatMode = Animation.INFINITE
+        }
+        with(leftNote) {
+            duration = 2300
+            repeatCount = 30
+            interpolator = TimeInterpolator { it }
+            repeatMode = Animation.INFINITE
+        }
+        with(leftVisibility) {
+            duration = 2300
+            repeatCount = 30
+            interpolator = DecelerateInterpolator()
+            repeatMode = Animation.INFINITE
+        }
+        with(flyYouFool) {
+            duration = 6000
+            repeatCount = 30
+            interpolator = TimeInterpolator { it }
+            repeatMode = Animation.INFINITE
+//                start()
+        }
+        val roundRound = ObjectAnimator.ofFloat(mNotiIcon, "rotation", 360f, 0f)
+        with(roundRound) {
+            duration = 4000
+            repeatCount = 30
+            interpolator = TimeInterpolator { it }
+            repeatMode = Animation.INFINITE
+//                start()
+        }
+        playSet.playTogether(flyYouFool, roundRound, leftNote, leftVisibility, rightNote, rightVisibility)
+        playSet.start()
+
+
     }
 
     private fun showWarning(speed: Int) {
