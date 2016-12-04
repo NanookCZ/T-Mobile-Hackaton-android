@@ -34,17 +34,17 @@
         android:rotation="20"
         android:src="@drawable/ic_note"
         app:layout_marginLeftPercent="55%"
-        app:layout_marginTopPercent="35%"
+        app:layout_marginTopPercent="30%"
 
         />
 
     <ImageView
         android:id="@+id/mNotiIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
         android:layout_centerHorizontal="true"
-        app:layout_marginTopPercent="45%"
-        tools:src="@drawable/spotify"
+        app:layout_marginTopPercent="25%"
+        tools:src="@drawable/ic_spotify"
         />
 
     <TextView
@@ -52,11 +52,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mNotiIcon"
-        android:layout_margin="16dp"
         android:gravity="center"
         android:text="@string/playing_spotify"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="28sp"
         />
 
     <TextView
@@ -65,10 +64,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/mNotiText"
         android:gravity="center"
-        android:maxLines="1"
         android:scrollHorizontally="true"
-        android:text="Queen - We are the champions //  Queen Greatest Hits - The Platinum Collection "
+        android:text="Queen - We are the champions - Greatest Hits"
         android:textColor="@color/grey"
+        android:textSize="20sp"
 
         />
 

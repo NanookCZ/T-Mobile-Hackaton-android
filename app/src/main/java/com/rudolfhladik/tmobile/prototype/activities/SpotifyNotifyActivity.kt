@@ -45,7 +45,7 @@ class SpotifyNotifyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spot_noti)
 
-
+        avgSpeedArray.add(1)
 
         mObserver = object : Observer<Response<JsonObject>> {
             override fun onError(e: Throwable) {
@@ -85,7 +85,7 @@ class SpotifyNotifyActivity : AppCompatActivity() {
             if (response.isSuccessful) {
                 var speed = response.body().get("Data").asJsonArray.get(0).asJsonObject.get("Speed").asJsonObject.get("Value").asInt
                 if (i > dummyCarSpeed) {
-                    showWarning()
+                    showWarning(i)
                 } else {
                     listenToMusic()
                 }
@@ -100,10 +100,13 @@ class SpotifyNotifyActivity : AppCompatActivity() {
     }
 
     private fun listenToMusic() {
+        if (warningSet.isRunning) warningSet.cancel()
         if (!spotifyPlayed) {
-            mNotiIcon.setImageDrawable(getDrawable(R.drawable.spotify))
+            mNotiIcon.setImageDrawable(getDrawable(R.drawable.ic_spotify))
+            mNotiIcon.scaleX = 1f
+            mNotiIcon.scaleY = 1f
             mNotiText.text = " From your playlist.."
-            mNotiSubText.text = " Queen - We are the champions //  Queen Greatest Hits - The Platinum Collection "
+            mNotiSubText.text = " Queen - We are the champions //  Queen Greatest Hits "
             spotifyPlayed = true
 
             val parent: ViewGroup = mNotiSubText.parent as ViewGroup
@@ -161,7 +164,7 @@ class SpotifyNotifyActivity : AppCompatActivity() {
         }
     }
 
-    private fun showWarning() {
+    private fun showWarning(speed: Int) {
         if (playSet.isRunning) {
             playSet.cancel()
         }
@@ -171,25 +174,28 @@ class SpotifyNotifyActivity : AppCompatActivity() {
             mLeftNote.alpha = 0f
             mRightNote.alpha = 0f
             mNotiText.text = "Warning, you are too close!!"
-            mNotiSubText.text = "Please keep safe distance."
-            mNotiSubText.translationX = 0f
             spotifyPlayed = false
-
-            val x = ObjectAnimator.ofFloat(mNotiIcon, "scaleX", 0.3f, 1.05f, 0.9f, 1f)
+            val x = ObjectAnimator.ofFloat(mNotiIcon, "scaleX", 0.2f, 0.95f, 0.6f, 0.7f)
             val dur: Long = 800
             with(x) {
                 duration = dur
             }
-            val y = ObjectAnimator.ofFloat(mNotiIcon, "scaleY", 0.3f, 1.05f, 0.9f, 1f)
+            val y = ObjectAnimator.ofFloat(mNotiIcon, "scaleY", 0.2f, 0.95f, 0.6f, 0.7f)
+//            val y = ObjectAnimator.ofFloat(mNotiIcon, "scaleY", 0.3f, 1.05f, 0.9f, 1f)
             with(y) {
                 duration = dur
             }
             warningSet.playTogether(x, y)
             warningSet.start()
         }
-
+        var speedCount: Int = 1
+        avgSpeedArray.forEach { speedCount += it }
+        var avgSpeed = speedCount / avgSpeedArray.size
+        mNotiSubText.text = "Please keep safe distance. \n$speed km/h \n$avgSpeed km/h avg "
+        mNotiSubText.translationX = 0f
 
     }
+
 
     private fun getData() {
         mSubscription = RestVM()
