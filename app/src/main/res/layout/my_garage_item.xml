@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/bg"
     >
 
@@ -25,7 +25,9 @@
             <ImageView
                 android:id="@+id/mCarImage"
                 android:layout_width="match_parent"
+                android:scaleType="centerCrop"
                 app:layout_heightPercent="80%"
+
                 />
 
             <TextView
@@ -43,7 +45,7 @@
                 android:id="@+id/mSpeedLabel"
                 android:layout_below="@+id/mSpeed"
                 android:gravity="center"
-                android:text="@string/avg_speed_label"
+                android:text="@string/manufac_year"
                 android:textColor="@color/grey"
                 android:textSize="12sp"
                 app:layout_heightPercent="10%"
@@ -78,7 +80,7 @@
                 android:layout_below="@+id/mFuel"
                 android:layout_toEndOf="@+id/separator"
                 android:gravity="center"
-                android:text="@string/l_fuel_label"
+                android:text="@string/mileage"
                 android:textColor="@color/grey"
                 android:textSize="12sp"
                 app:layout_heightPercent="10%"
@@ -114,7 +116,7 @@
                 android:layout_below="@+id/mFuel"
                 android:layout_toEndOf="@+id/separator1"
                 android:gravity="center"
-                android:text="@string/erros_label"
+                android:text="@string/owners_count"
                 android:textColor="@color/grey"
                 android:textSize="12sp"
                 app:layout_heightPercent="10%"
@@ -125,7 +127,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mUsersList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/mCardInfo"
         />
 

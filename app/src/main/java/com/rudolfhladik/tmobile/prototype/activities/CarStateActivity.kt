@@ -16,6 +16,8 @@ class CarStateActivity : AppCompatActivity() {
 
         //toolbar setup
         setSupportActionBar(mToolbarState)
+        mToolbarState.setNavigationIcon(R.drawable.ic_back)
+        mToolbarState.setNavigationOnClickListener { onBackPressed() }
 
 
     }

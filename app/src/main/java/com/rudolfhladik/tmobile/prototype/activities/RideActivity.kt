@@ -19,6 +19,8 @@ class RideActivity : AppCompatActivity() {
 
         //toolbar setup
         setSupportActionBar(mToolbarRide)
+        mToolbarRide.setNavigationIcon(R.drawable.ic_back)
+        mToolbarRide.setNavigationOnClickListener { onBackPressed() }
 
 
     }

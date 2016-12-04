@@ -15,8 +15,9 @@
     <string name="car_configuration">Car configuration</string>
     <string name="car_state">Car state</string>
     <string name="ride">Ride</string>
-    <string name="users">Users</string>
+    <string name="users">User settings</string>
     <string name="playing_spotify">Playing Spotify</string>
+
     <string name="avg_speed_label">avg speed</string>
     <string name="erros_label">erros</string>
     <string name="l_fuel_label">l fuel</string>
@@ -41,4 +42,8 @@
     <string name="owners_count">owners</string>
     <string name="two">2</string>
     <string name="check_safe_distance">Check safe distance</string>
+    <string name="twisto_payments">Twisto payments</string>
+    <string name="share_wi_fi">Share Wi-fi</string>
+    <string name="spotify">Spotify</string>
+    <string name="share_ride">Share ride</string>
 </resources>

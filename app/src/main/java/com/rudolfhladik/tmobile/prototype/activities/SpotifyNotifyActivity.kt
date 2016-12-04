@@ -4,6 +4,7 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.TimeInterpolator
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -36,11 +37,14 @@ class SpotifyNotifyActivity : AppCompatActivity() {
     var rising = true
     var spotifyPlayed = true
     var avgSpeedArray = ArrayList<Int>()
+    var trueSpeedFromCar: Int = 0
     val playSet = AnimatorSet()
     val warningSet = AnimatorSet()
 
 
     val dummyCarSpeed = 55
+
+    lateinit var tts: TextToSpeech
 
     var layoutReady = object : ViewTreeObserver.OnGlobalLayoutListener {
         override fun onGlobalLayout() {
@@ -63,7 +67,7 @@ class SpotifyNotifyActivity : AppCompatActivity() {
 
             override fun onCompleted() {
                 if (run) {
-                    Log.i("mySpeed", "$i km/h")
+                    Log.i("mySpeed", "$i km/h , realSpeed $trueSpeedFromCar")
                     getData()
                     if (rising && i in 40..65) {
                         i++
@@ -75,7 +79,7 @@ class SpotifyNotifyActivity : AppCompatActivity() {
                         rising = true
                     }
                     if (avgSpeedArray.size > 10) avgSpeedArray.clear()
-                    avgSpeedArray.add(i)
+                    avgSpeedArray.add(trueSpeedFromCar)
                     Log.i("averageSpeed ", "size: ${avgSpeedArray.size}")
                 }
             }
@@ -94,9 +98,10 @@ class SpotifyNotifyActivity : AppCompatActivity() {
     private fun handleResponse(response: Response<JsonObject>?) {
         if (response != null) {
             if (response.isSuccessful) {
-                var speed = response.body().get("Data").asJsonArray.get(0).asJsonObject.get("Speed").asJsonObject.get("Value").asInt
-                if (i > dummyCarSpeed) {
-                    showWarning(i)
+                trueSpeedFromCar = response.body().get("Data").asJsonArray.get(0).asJsonObject.get("Speed").asJsonObject.get("Value").asInt
+
+                if (trueSpeedFromCar > dummyCarSpeed) {
+                    showWarning(trueSpeedFromCar)
                 } else {
                     listenToMusic()
                 }
@@ -187,6 +192,24 @@ class SpotifyNotifyActivity : AppCompatActivity() {
             playSet.cancel()
         }
         if (spotifyPlayed) {
+            tts = TextToSpeech(this, TextToSpeech.OnInitListener {
+                if (it === TextToSpeech.SUCCESS) {
+                    val result = tts.setLanguage(Locale.US)
+                    // tts.setPitch(5); // set pitch level
+                    tts.setSpeechRate(2f) // set speech speed rate
+
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Log.e("TTS", "Language is not supported")
+                    } else {
+                        speakOut()
+                    }
+
+                } else {
+                    Log.e("TTS", "Initilization Failed")
+                }
+            })
+
+
             mNotiIcon.setImageDrawable(getDrawable(R.drawable.stop))
             mNotiIcon.rotation = 0f
             mLeftNote.alpha = 0f
@@ -212,6 +235,12 @@ class SpotifyNotifyActivity : AppCompatActivity() {
         mNotiSubText.text = "Please keep safe distance. \n$speed km/h \n$avgSpeed km/h avg "
         mNotiSubText.translationX = 0f
 
+    }
+
+    private fun speakOut() {
+        val text = "Do you want to break the light speed? or what? Ok, punch it chewie."
+
+        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
     }
 
 

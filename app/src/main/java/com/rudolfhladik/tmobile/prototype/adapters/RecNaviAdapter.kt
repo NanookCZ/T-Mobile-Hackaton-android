@@ -7,8 +7,9 @@ import android.util.Log
 import android.view.ViewGroup
 import com.rudolfhladik.tmobile.prototype.R
 import com.rudolfhladik.tmobile.prototype.activities.CarStateActivity
+import com.rudolfhladik.tmobile.prototype.activities.MyGarageActivity
 import com.rudolfhladik.tmobile.prototype.activities.RideActivity
-import com.rudolfhladik.tmobile.prototype.activities.SelectCarActivity
+import com.rudolfhladik.tmobile.prototype.activities.UsersActivity
 import com.rudolfhladik.tmobile.prototype.extensions.inflate
 import com.rudolfhladik.tmobile.prototype.model.NavItem
 import kotlinx.android.synthetic.main.navi_item.view.*
@@ -82,7 +83,7 @@ class RecNaviAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private fun navigate(position: Int) {
             when (position) {
                 MY_GARAGE -> {
-                    itemView.context.startActivity(Intent(itemView.context, SelectCarActivity::class.java))
+                    itemView.context.startActivity(Intent(itemView.context, MyGarageActivity::class.java))
                 }
                 CAR_STATE -> {
                     itemView.context.startActivity(Intent(itemView.context, CarStateActivity::class.java))
@@ -93,7 +94,7 @@ class RecNaviAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     itemView.context.startActivity(Intent(itemView.context, RideActivity::class.java))
                 }
                 USERS -> {
-                    itemView.context.startActivity(Intent(itemView.context, RideActivity::class.java))
+                    itemView.context.startActivity(Intent(itemView.context, UsersActivity::class.java))
                 }
             }
         }

@@ -2,25 +2,23 @@
 <android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mCarSelectItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
     >
 
-    <TextView
-        android:id="@+id/mCarName"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mToolbarUsers"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        tools:text="sadawdas"
+        android:layout_height="?attr/actionBarSize"
+        app:titleTextColor="@color/white"
         />
+
     <android.support.v7.widget.CardView
         android:id="@+id/mCardInfo"
         android:layout_width="match_parent"
-        android:layout_below="@+id/mCarName"
+        android:layout_below="@id/mToolbarUsers"
         android:layout_margin="26dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="4dp"
@@ -43,11 +41,11 @@
                 android:id="@+id/mYear"
                 android:layout_below="@+id/mCarImage"
                 android:gravity="center_horizontal|bottom"
+                android:text="2016"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_heightPercent="10%"
                 app:layout_widthPercent="33%"
-                tools:text="23 km/h"
                 />
 
             <TextView
@@ -77,11 +75,11 @@
                 android:layout_below="@+id/mCarImage"
                 android:layout_toEndOf="@+id/separator"
                 android:gravity="center_horizontal|bottom"
+                android:text="18301.0"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_heightPercent="10%"
                 app:layout_widthPercent="33%"
-                tools:text="23"
                 />
 
             <TextView
@@ -133,5 +131,100 @@
         </android.support.percent.PercentRelativeLayout>
     </android.support.v7.widget.CardView>
 
+    <TextView
+        android:id="@+id/twistoPayments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mCardInfo"
+        android:layout_margin="26dp"
+        android:text="@string/twisto_payments"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        />
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/mSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/twistoPayments"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/mCardInfo"
+        android:layout_margin="26dp"
+        android:layout_toEndOf="@+id/twistoPayments"
+
+        />
+
+    <TextView
+        android:id="@+id/shareWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/twistoPayments"
+        android:layout_margin="26dp"
+        android:text="@string/share_wi_fi"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        />
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/mWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/shareWifi"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/mSwitch"
+        android:layout_margin="26dp"
+        android:layout_toEndOf="@+id/twistoPayments"
+        android:checked="true"
+
+        />
+
+    <TextView
+        android:id="@+id/spotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shareWifi"
+        android:layout_margin="26dp"
+        android:text="@string/spotify"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        />
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/mSpotifySwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/spotify"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/mWifi"
+        android:layout_margin="26dp"
+        android:layout_toEndOf="@+id/twistoPayments"
+        android:checked="true"
+
+
+        />
+
+    <TextView
+        android:id="@+id/shareRide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spotify"
+        android:layout_margin="26dp"
+        android:text="@string/share_ride"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        />
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/mShare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/shareRide"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/mSpotifySwitch"
+        android:layout_margin="26dp"
+        android:layout_toEndOf="@+id/twistoPayments"
+        android:checked="true"
+
+        />
 
 </android.support.percent.PercentRelativeLayout>

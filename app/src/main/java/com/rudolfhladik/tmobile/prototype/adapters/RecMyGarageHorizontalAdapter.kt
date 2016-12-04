@@ -1,13 +1,21 @@
 package com.rudolfhladik.tmobile.prototype.adapters
 
-import android.support.v4.content.ContextCompat
+import android.content.Intent
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.ViewGroup
+import android.widget.Toast
+import com.bumptech.glide.Glide
 import com.rudolfhladik.tmobile.prototype.R
+import com.rudolfhladik.tmobile.prototype.activities.MainActivity
+import com.rudolfhladik.tmobile.prototype.extensions.formatYear
 import com.rudolfhladik.tmobile.prototype.extensions.inflate
-import com.rudolfhladik.tmobile.prototype.model.NavItem
-import kotlinx.android.synthetic.main.navi_item.view.*
+import com.rudolfhladik.tmobile.prototype.model.Owner
+import com.rudolfhladik.tmobile.prototype.model.Vehicle
+import com.rudolfhladik.tmobile.prototype.singletons.PreferencesSingleton
+import kotlinx.android.synthetic.main.my_garage_item.view.*
+import java.util.*
 
 /**
  *
@@ -16,12 +24,12 @@ import kotlinx.android.synthetic.main.navi_item.view.*
 class RecMyGarageHorizontalAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
-    private var mList = mutableListOf<NavItem>()
+    private var mList = mutableListOf<Vehicle>()
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         holder as MyGarageViewHolder
-        holder.bind(mList[position] as NavItem)
+        holder.bind(mList[position] as Vehicle)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -33,7 +41,7 @@ class RecMyGarageHorizontalAdapter() : RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
 
-    fun addItems(news: MutableList<NavItem>?) {
+    fun addItems(news: MutableList<Vehicle>?) {
         if (news != null) {
             mList.clear()
             mList.plusAssign(news)
@@ -45,28 +53,33 @@ class RecMyGarageHorizontalAdapter() : RecyclerView.Adapter<RecyclerView.ViewHol
 
     }
 
-    fun addItem(item: NavItem) {
+    fun addItem(item: Vehicle) {
         mList.add(item)
         notifyDataSetChanged()
 
     }
 
     class MyGarageViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.my_garage_item)) {
-        fun bind(item: NavItem) = with(itemView) {
-            mIcon.setImageDrawable(ContextCompat.getDrawable(itemView.context, item.iconRes))
-            mText.text = item.text
+        val recAdapter = RecOwnerAdapter()
 
-            val url = "http://kclrfanzone.com/wp-content/uploads/2016/04/3022879-inline-s-6-2013-fifa-world-cup-brasil-ball.jpg"
+        fun bind(item: Vehicle) = with(itemView) {
 
-//            val roundIV = object : BitmapImageViewTarget(imageView) {
-//                override fun setResource(resource: Bitmap) {
-//                    val circBitmapDrawable = RoundedBitmapDrawableFactory.create(imageView.context.resources, resource)
-//                    circBitmapDrawable.isCircular = true
-//                    imageView.setImageDrawable(circBitmapDrawable)
-//                }
-//            }
-//            Glide.with(this).load(url).asBitmap().centerCrop().into(roundIV)
+            Glide.with(itemView.context).load(item.carImage.get("Src").asString).into(mCarImage)
+            mSpeed.text = item.year.formatYear()
+            mFuel.text = item.mileage.get("Value").asString ?: ""
+            mError.text = "2"
+            mCardInfo.setOnClickListener {
+                PreferencesSingleton.getInstance(itemView.context).setSelectedCarName(item.vehicleName)
+                Toast.makeText(itemView.context, "${item.vehicleName} selected, good choice.", Toast.LENGTH_LONG).show()
+                itemView.context.startActivity(Intent(this.context, MainActivity::class.java))
+            }
 
+            mUsersList.adapter = recAdapter
+            mUsersList.layoutManager = LinearLayoutManager(mUsersList.context)
+            val listUsers = ArrayList<Owner>()
+            listUsers.add(Owner("Svetlana Margetova", "4.12.2016", "https://files.slack.com/files-pri/T308GDCRG-F3ADT5SHK/sveta.jpg", "owner", "Prague"))
+            listUsers.add(Owner("Rudolf Hladik", "4.12.2016", "https://trello-attachments.s3.amazonaws.com/52589bca65b0b14e1d004d94/581efa2dafc1d1f2ca807a35/45b27f2a525bd8cd3c4921ecbfa1c321/ruda.jpg", "co-owner", "Prague"))
+            recAdapter.addItems(listUsers.toMutableList())
 
         }
 

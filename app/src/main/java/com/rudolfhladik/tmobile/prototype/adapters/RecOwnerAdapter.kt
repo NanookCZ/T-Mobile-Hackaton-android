@@ -1,11 +1,16 @@
 package com.rudolfhladik.tmobile.prototype.adapters
 
+import android.graphics.Bitmap
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.rudolfhladik.tmobile.prototype.R
 import com.rudolfhladik.tmobile.prototype.extensions.inflate
 import com.rudolfhladik.tmobile.prototype.model.Owner
+import kotlinx.android.synthetic.main.owner_item.view.*
 
 /**
  *
@@ -35,7 +40,7 @@ class RecOwnerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         if (news != null) {
             mList.clear()
             mList.plusAssign(news)
-            Log.i("plus: ", mList.size.toString())
+            Log.i("owners list size: ", mList.size.toString())
             notifyDataSetChanged()
         } else {
             mList.clear()
@@ -51,6 +56,21 @@ class RecOwnerAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class OwnerViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.owner_item)) {
         fun bind(item: Owner) = with(itemView) {
+
+
+            val roundIV = object : BitmapImageViewTarget(mCircleOwnerImage) {
+                override fun setResource(resource: Bitmap) {
+                    val circBitmapDrawable = RoundedBitmapDrawableFactory.create(mCircleOwnerImage.context.resources, resource)
+                    circBitmapDrawable.isCircular = true
+                    mCircleOwnerImage.setImageDrawable(circBitmapDrawable)
+                }
+            }
+            val url = item.imgUrl
+            Glide.with(mCircleOwnerImage.context).load(url).asBitmap().centerCrop().into(roundIV)
+
+            mOwnerName.text = item.userName
+            mOwnerLocationAndType.text = "${item.origin}, ${item.type}"
+            mLastDrive.text = item.lastRide
 
 
         }

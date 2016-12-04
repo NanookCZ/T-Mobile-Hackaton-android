@@ -1,5 +1,7 @@
 package com.rudolfhladik.tmobile.prototype.activities
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -31,11 +33,20 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         if (PreferencesSingleton.getInstance(this).getToken() != "") {
-            startMain()
+//            startMain()
 
         }
 
         mLoginBtn.setOnClickListener {
+            val dur: Long = 300
+            val x = ObjectAnimator.ofFloat(mLoginBtn, "scaleX", 0.6f, 1.2f, 0.8f, 1f)
+            x.duration = dur
+            val y = ObjectAnimator.ofFloat(mLoginBtn, "scaleY", 0.6f, 1.2f, 0.8f, 1f)
+            y.duration = dur
+            val clickAnimSet = AnimatorSet()
+            clickAnimSet.playTogether(x, y)
+            clickAnimSet.start()
+
             login()
         }
 
@@ -90,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun startMain() {
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, SelectCarActivity::class.java))
         finish()
     }
 

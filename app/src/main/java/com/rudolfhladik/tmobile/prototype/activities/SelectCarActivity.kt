@@ -12,6 +12,7 @@ import com.rudolfhladik.tmobile.prototype.R
 import com.rudolfhladik.tmobile.prototype.ViewModel.RestVM
 import com.rudolfhladik.tmobile.prototype.adapters.RecSelectCarAdapter
 import com.rudolfhladik.tmobile.prototype.model.Vehicle
+import com.rudolfhladik.tmobile.prototype.singletons.PreferencesSingleton
 import kotlinx.android.synthetic.main.activity_select_car.*
 import retrofit2.Response
 import rx.Observer
@@ -28,7 +29,6 @@ class SelectCarActivity : AppCompatActivity() {
 
     var selectAdapter = RecSelectCarAdapter()
     val gson = Gson()
-    var i: Int = 0
 
     lateinit var mSubscription: Subscription
     lateinit var mObserver: Observer<Response<JsonObject>>
@@ -39,7 +39,7 @@ class SelectCarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_select_car)
 
         //setup toolbar
-//        setSupportActionBar(toolbar_main)
+        setSupportActionBar(mToolbarCarSelect)
 
         mObserver = object : Observer<Response<JsonObject>> {
             override fun onError(e: Throwable?) {
@@ -51,14 +51,13 @@ class SelectCarActivity : AppCompatActivity() {
 
             override fun onNext(response: Response<JsonObject>) {
                 handleResponse(response)
-                i++
-                Log.i("newResponse", "response number $i")
             }
         }
 
         //setup navigation
         mCarSelectRec.adapter = selectAdapter
-        mCarSelectRec.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        mCarSelectRec.layoutManager = LinearLayoutManager(this)
+//        mCarSelectRec.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         val items = ArrayList<Vehicle>()
         val jsonMile = JsonObject()
@@ -89,6 +88,7 @@ class SelectCarActivity : AppCompatActivity() {
                 Log.i("vehicles", "size: ${vehicles.size} , name: ${vehicles[0].vehicleName}")
                 if (!vehicles.isEmpty()) {
                     selectAdapter.addItems(vehicles.toMutableList())
+                    PreferencesSingleton.getInstance(this).setCarImgUrl(vehicles[0].carImage.get("Src").asString)
                 }
             } else {
                 Log.i("getVehiclesFailed", "${response.code()} ")

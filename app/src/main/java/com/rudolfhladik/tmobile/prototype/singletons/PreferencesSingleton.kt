@@ -15,6 +15,7 @@ class PreferencesSingleton private constructor(context: Context) {
     private val ACCESS_TOKEN = "access_token"
     private val REFRESH_TOKEN = "refresh_token"
     private val SELECTED_CAR_NAME = "selected_car_name"
+    private val CAR_IMG_URL = "car_img_url"
 
     init {
         mContext = context.applicationContext
@@ -61,4 +62,14 @@ class PreferencesSingleton private constructor(context: Context) {
     fun getSelectedCarName(): String {
         return mPreferences.getString(SELECTED_CAR_NAME, "")
     }
+
+    fun setCarImgUrl(url: String) {
+        getEditor().putString(CAR_IMG_URL, url)
+                .commit()
+    }
+
+    fun getCarImgUrl(): String {
+        return mPreferences.getString(CAR_IMG_URL, "")
+    }
+
 }

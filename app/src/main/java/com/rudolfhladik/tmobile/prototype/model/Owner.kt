@@ -1,6 +1,5 @@
 package com.rudolfhladik.tmobile.prototype.model
 
-import com.google.gson.JsonObject
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -16,6 +15,8 @@ class Owner(@SerializedName("UserName")
             var lastRide: String = "",
             @SerializedName("Image")
             @Expose
-            var imgUrl: JsonObject) {
+            var imgUrl: String = "",
+            var type: String = "",
+            var origin: String = "") {
 
 }
