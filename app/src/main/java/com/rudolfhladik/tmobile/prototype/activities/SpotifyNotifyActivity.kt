@@ -1,9 +1,15 @@
 package com.rudolfhladik.tmobile.prototype.activities
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
+import android.animation.TimeInterpolator
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.DecelerateInterpolator
 import com.google.gson.JsonObject
 import com.rudolfhladik.tmobile.prototype.R
 import com.rudolfhladik.tmobile.prototype.ViewModel.RestVM
@@ -23,18 +29,23 @@ class SpotifyNotifyActivity : AppCompatActivity() {
 
     lateinit var mSubscription: Subscription
     lateinit var mObserver: Observer<Response<JsonObject>>
-    var i: Int = 40
+    var i: Int = 64 //40
     var run: Boolean = true
     var safeDistance: Float = 100.0f
     var rising = true
     var spotifyPlayed = true
     var avgSpeedArray = ArrayList<Int>()
+    val playSet = AnimatorSet()
+    val warningSet = AnimatorSet()
+
 
     val dummyCarSpeed = 55
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spot_noti)
+
+
 
         mObserver = object : Observer<Response<JsonObject>> {
             override fun onError(e: Throwable) {
@@ -95,21 +106,86 @@ class SpotifyNotifyActivity : AppCompatActivity() {
             mNotiSubText.text = " Queen - We are the champions //  Queen Greatest Hits - The Platinum Collection "
             spotifyPlayed = true
 
-//                val leftAnim =
-//                ViewGroup parent = (ViewGroup)target.getParent();
-//                int distance = parent.getWidth() - target.getLeft();
-//                getAnimatorAgent().playTogether(
-//                        ObjectAnimator.ofFloat(target, "alpha", 0, 1),
-//                        ObjectAnimator.ofFloat(target,"translationX",-distance,0)
+            val parent: ViewGroup = mNotiSubText.parent as ViewGroup
+            val distance = parent.width - mNotiSubText.left
+            val distanceHeight = parent.height - mLeftNote.height
+            val distanceHeightR = parent.height - mRightNote.height
+            val flyYouFool = ObjectAnimator.ofFloat(mNotiSubText, "translationX", distance.toFloat(), 0f, -distance.toFloat())
+            val leftNote = ObjectAnimator.ofFloat(mLeftNote, "translationY", 0f, -distanceHeight.toFloat())
+            val rightNote = ObjectAnimator.ofFloat(mRightNote, "translationY", 0f, -distanceHeightR.toFloat())
+            val leftVisibility = ObjectAnimator.ofFloat(mLeftNote, "alpha", 1f, 0f)
+            val rightVisibility = ObjectAnimator.ofFloat(mRightNote, "alpha", 1f, 0f)
+
+            with(rightNote) {
+                duration = 2000
+                repeatCount = 30
+                interpolator = TimeInterpolator { it }
+                repeatMode = Animation.INFINITE
+            }
+            with(rightVisibility) {
+                duration = 2000
+                repeatCount = 30
+                interpolator = DecelerateInterpolator()
+                repeatMode = Animation.INFINITE
+            }
+            with(leftNote) {
+                duration = 2300
+                repeatCount = 30
+                interpolator = TimeInterpolator { it }
+                repeatMode = Animation.INFINITE
+            }
+            with(leftVisibility) {
+                duration = 2300
+                repeatCount = 30
+                interpolator = DecelerateInterpolator()
+                repeatMode = Animation.INFINITE
+            }
+            with(flyYouFool) {
+                duration = 6000
+                repeatCount = 30
+                interpolator = TimeInterpolator { it }
+                repeatMode = Animation.INFINITE
+//                start()
+            }
+            val roundRound = ObjectAnimator.ofFloat(mNotiIcon, "rotation", 360f, 0f)
+            with(roundRound) {
+                duration = 4000
+                repeatCount = 30
+                interpolator = TimeInterpolator { it }
+                repeatMode = Animation.INFINITE
+//                start()
+            }
+            playSet.playTogether(flyYouFool, roundRound, leftNote, leftVisibility, rightNote, rightVisibility)
+            playSet.start()
 
         }
     }
 
     private fun showWarning() {
+        if (playSet.isRunning) {
+            playSet.cancel()
+        }
         if (spotifyPlayed) {
             mNotiIcon.setImageDrawable(getDrawable(R.drawable.stop))
+            mNotiIcon.rotation = 0f
+            mLeftNote.alpha = 0f
+            mRightNote.alpha = 0f
+            mNotiText.text = "Warning, you are too close!!"
+            mNotiSubText.text = "Please keep safe distance."
+            mNotiSubText.translationX = 0f
             spotifyPlayed = false
 
+            val x = ObjectAnimator.ofFloat(mNotiIcon, "scaleX", 0.3f, 1.05f, 0.9f, 1f)
+            val dur: Long = 800
+            with(x) {
+                duration = dur
+            }
+            val y = ObjectAnimator.ofFloat(mNotiIcon, "scaleY", 0.3f, 1.05f, 0.9f, 1f)
+            with(y) {
+                duration = dur
+            }
+            warningSet.playTogether(x, y)
+            warningSet.start()
         }
 
 

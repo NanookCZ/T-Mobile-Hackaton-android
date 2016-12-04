@@ -16,11 +16,34 @@
         />
 
     <ImageView
+        android:id="@+id/mLeftNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:rotation="320"
+        android:src="@drawable/ic_note"
+        app:layout_marginLeftPercent="35%"
+        app:layout_marginTopPercent="40%"
+        />
+
+    <ImageView
+        android:id="@+id/mRightNote"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:alpha="0"
+        android:rotation="20"
+        android:src="@drawable/ic_note"
+        app:layout_marginLeftPercent="55%"
+        app:layout_marginTopPercent="35%"
+
+        />
+
+    <ImageView
         android:id="@+id/mNotiIcon"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        app:layout_marginTopPercent="55%"
+        app:layout_marginTopPercent="45%"
         tools:src="@drawable/spotify"
         />
 
@@ -41,11 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/mNotiText"
-        android:ellipsize="marquee"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:gravity="center"
-        android:marqueeRepeatLimit="marquee_forever"
         android:maxLines="1"
         android:scrollHorizontally="true"
         android:text="Queen - We are the champions //  Queen Greatest Hits - The Platinum Collection "
